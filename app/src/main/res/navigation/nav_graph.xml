@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment"> <!-- 开始的fragment -->
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.lzp.navigation.fragment.MainFragment"
+        android:label="main"
+        tools:layout="@layout/fragment_main">
+
+        <!-- action自定义,启动模式，启动动画等，id为必填项-->
+        <!-- app:destination ：目标fragment -->
+        <!--
+            app:enterAnim="@anim/enter_anim" // 进入页面的动画
+            app:exitAnim="@anim/exit_anim"   // 退出的页面的动画
+            app:popEnterAnim="@anim/pop_enter_anim"  // 点击返回或回到上一页时，上一个页面的进入动画
+            app:popExitAnim="@anim/pop_exit_anim"    // 点击返回或回到上一页时，当前页面的退出动画
+         -->
+        <action
+            android:id="@+id/to_second"
+            app:destination="@id/secondFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.lzp.navigation.fragment.SecondFragment"
+        android:label="second"
+        tools:layout="@layout/fragment_sec">
+
+        <deepLink app:uri="lzp://main/second" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/to_second_activity"
+        android:name="com.lzp.navigation.SecondActivity">
+
+        <deepLink app:uri="lzp://second/main" />
+
+    </activity>
+
+</navigation>
